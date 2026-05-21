@@ -65,10 +65,8 @@ def load_olist_data(data_dir: Path = DATA_DIR) -> pd.DataFrame:
     )
 
     df["delivery_time_days"] = (
-        (df["order_delivered_customer_date"] - df["order_purchase_timestamp"])
-        .dt.total_seconds()
-        / 86400
-    )
+        df["order_delivered_customer_date"] - df["order_purchase_timestamp"]
+    ).dt.total_seconds() / 86400
 
     df = df[(df["delivery_time_days"] > 0) & (df["delivery_time_days"] < 60)]
 

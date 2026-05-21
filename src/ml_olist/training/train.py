@@ -71,9 +71,7 @@ def train(n_estimators: int = 150, max_depth: int = 15, random_state: int = 42) 
         mlflow.log_metrics(metrics)
 
         print(
-            f"R²={metrics['r2']:.4f} "
-            f"MAE={metrics['mae']:.1f}j "
-            f"RMSE={metrics['rmse']:.1f}j"
+            f"R²={metrics['r2']:.4f} " f"MAE={metrics['mae']:.1f}j " f"RMSE={metrics['rmse']:.1f}j"
         )
 
         # Gate de qualité du TP
