@@ -32,3 +32,5 @@ mlflow.db
 .vscode/
 .idea/
 .DS_Store
+.coverage
+.coverage

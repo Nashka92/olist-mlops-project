@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import pandas as pd
 import pytest
 
@@ -6,6 +8,11 @@ from src.ml_olist.training.data import load_olist_data, split_data
 
 @pytest.fixture(scope="module")
 def df():
+    data_file = "data/olist/olist_orders_dataset.csv"
+
+    if not Path(data_file).exists():
+        pytest.skip("Dataset Olist absent — test ignoré en CI")
+
     return load_olist_data()
 
 

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import numpy as np
 import pytest
 
@@ -8,6 +10,11 @@ from src.ml_olist.training.features import build_preprocessing_pipeline
 
 @pytest.fixture(scope="module")
 def splits():
+    data_file = Path("data/olist/olist_orders_dataset.csv")
+
+    if not data_file.exists():
+        pytest.skip("Dataset Olist absent — test ignoré en CI")
+
     df = load_olist_data()
     return split_data(df)
 
